@@ -110,7 +110,7 @@ public class RNDataWedgeIntentsModule extends ReactContextBaseJavaModule impleme
         } else {
             reactContext.registerReceiver(receiver, intentFilter);
         }
-	    if (this.registeredAction != null)
+	    if (this.registeredAction != null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 reactContext.registerReceiver(receiver, intentFilter, Context.RECEIVER_EXPORTED);
             } else {
@@ -364,8 +364,9 @@ public class RNDataWedgeIntentsModule extends ReactContextBaseJavaModule impleme
         unregisterReceiver(scannedDataBroadcastReceiver);
         IntentFilter filter = new IntentFilter();
         filter.addAction(action);
-        if (category != null && category.length() > 0)
-          filter.addCategory(category);
+        if (category != null && category.length() > 0) {
+            filter.addCategory(category);
+        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             this.reactContext.registerReceiver(scannedDataBroadcastReceiver, filter, Context.RECEIVER_EXPORTED);
         } else {
